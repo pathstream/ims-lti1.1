@@ -1,4 +1,4 @@
-# IMS LTI
+# IMS LTI1_1
 
 This ruby library is to help create Tool Providers and Tool Consumers for the
 [IMS LTI standard](http://www.imsglobal.org/lti/index.html).
@@ -59,7 +59,7 @@ the request, you can initialize a `ToolProvider` object with them and the post p
 
 ```ruby
 # Initialize TP object with OAuth creds and post parameters
-provider = IMS::LTI::ToolProvider.new(consumer_key, consumer_secret, params)
+provider = IMS::LTI1_1::ToolProvider.new(consumer_key, consumer_secret, params)
 
 # Verify OAuth signature by passing the request object
 if provider.valid_request?(request)
@@ -114,13 +114,13 @@ This is covered in the [LTI security model](http://www.imsglobal.org/LTI/v1p1/lt
 
 ```ruby
 
-params = { user_id: '123', lti_message_type: IMS::LTI::Models::Messages::BasicLTILaunchRequest::MESSAGE_TYPE }
+params = { user_id: '123', lti_message_type: IMS::LTI1_1::Models::Messages::BasicLTI1_1LaunchRequest::MESSAGE_TYPE }
 
 header = SimpleOAuth::Header.new(:post, 'https://yoursite.com', params, consumer_key: oauth_consumer_key, consumer_secret: secret)
 
 signed_params = header.signed_attributes.merge(params)
 
-IMS::LTI::Services::MessageAuthenticator.new(launch_url, signed_params, secret)
+IMS::LTI1_1::Services::MessageAuthenticator.new(launch_url, signed_params, secret)
 
 ```
 

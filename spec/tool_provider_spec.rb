@@ -1,5 +1,5 @@
 require "spec_helper"
-describe IMS::LTI::ToolProvider do
+describe IMS::LTI1_1::ToolProvider do
   #todo test stuff from certification: http://www.imsglobal.org/developers/alliance/LTI/cert-v1p1/
   before do
     create_test_tp

@@ -1,4 +1,4 @@
-module IMS::LTI
+module IMS::LTI1_1
   # Class for consuming/generating LTI Outcome Requests
   #
   # Outcome Request documentation: http://www.imsglobal.org/lti/v1p1pd/ltiIMGv1p1pd.html#_Toc309649691
@@ -17,7 +17,7 @@ module IMS::LTI
   # information in the request. Typical usage would be:
   #
   #    # create an OutcomeRequest from the request object
-  #    req = IMS::LTI::OutcomeRequest.from_post_request(request)
+  #    req = IMS::LTI1_1::OutcomeRequest.from_post_request(request)
   #
   #    # access the source id to identify the user who's grade you'd like to access
   #    req.lis_result_sourcedid
@@ -33,7 +33,7 @@ module IMS::LTI
   #      # return an unsupported OutcomeResponse
   #    end
   class OutcomeRequest < ToolBase
-    include IMS::LTI::Extensions::Base
+    include IMS::LTI1_1::Extensions::Base
 
     REPLACE_REQUEST = 'replaceResult'
     DELETE_REQUEST = 'deleteResult'
@@ -54,7 +54,7 @@ module IMS::LTI
 
     # Convenience method for creating a new OutcomeRequest from a request object
     #
-    #    req = IMS::LTI::OutcomeRequest.from_post_request(request)
+    #    req = IMS::LTI1_1::OutcomeRequest.from_post_request(request)
     def self.from_post_request(post_request)
       request = OutcomeRequest.new
       request.process_post_request(post_request)
@@ -121,7 +121,7 @@ module IMS::LTI
     #
     # @return [OutcomeResponse] The response from the Tool Consumer
     def post_outcome_request
-      raise IMS::LTI::InvalidLTIConfigError, "" unless has_required_attributes?
+      raise IMS::LTI1_1::InvalidLTIConfigError, "" unless has_required_attributes?
 
       res = post_service_request(@lis_outcome_service_url,
                                  'application/xml',
@@ -149,7 +149,7 @@ module IMS::LTI
     end
 
     def generate_request_xml
-      raise IMS::LTI::InvalidLTIConfigError, "`@operation` and `@lis_result_sourcedid` are required" unless has_request_xml_attributes?
+      raise IMS::LTI1_1::InvalidLTIConfigError, "`@operation` and `@lis_result_sourcedid` are required" unless has_request_xml_attributes?
       builder = Builder::XmlMarkup.new #(:indent=>2)
       builder.instruct!
 
@@ -157,7 +157,7 @@ module IMS::LTI
         env.imsx_POXHeader do |header|
           header.imsx_POXRequestHeaderInfo do |info|
             info.imsx_version "V1.0"
-            info.imsx_messageIdentifier @message_identifier || IMS::LTI::generate_identifier
+            info.imsx_messageIdentifier @message_identifier || IMS::LTI1_1::generate_identifier
           end
         end
         env.imsx_POXBody do |body|

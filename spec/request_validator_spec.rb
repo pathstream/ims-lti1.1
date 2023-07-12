@@ -1,10 +1,10 @@
 require "spec_helper"
-describe IMS::LTI::RequestValidator do
+describe IMS::LTI1_1::RequestValidator do
   context "invalid request" do
     let(:oauth_signature_validator) { double("oauth_signature_validator") }
     before do
       create_params
-      @tool = IMS::LTI::ToolProvider.new("hooi", 'oi', @params)
+      @tool = IMS::LTI1_1::ToolProvider.new("hooi", 'oi', @params)
     end
 
     it "should raise OAuth::Unauthorized" do

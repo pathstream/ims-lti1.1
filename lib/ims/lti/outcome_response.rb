@@ -1,4 +1,4 @@
-module IMS::LTI
+module IMS::LTI1_1
   # Class for consuming/generating LTI Outcome Responses
   #
   # Response documentation: http://www.imsglobal.org/lti/v1p1pd/ltiIMGv1p1pd.html#_Toc309649691
@@ -21,7 +21,7 @@ module IMS::LTI
   # accessing the information in the request. Typical usage would be:
   #
   #    # create a new response and set the appropriate values
-  #    res = IMS::LTI::OutcomeResponse.new
+  #    res = IMS::LTI1_1::OutcomeResponse.new
   #    res.message_ref_identifier = outcome_request.message_identifier
   #    res.operation = outcome_request.operation
   #    res.code_major = 'success'
@@ -45,7 +45,7 @@ module IMS::LTI
   #    res.generate_response_xml
   #
   class OutcomeResponse
-    include IMS::LTI::Extensions::Base
+    include IMS::LTI1_1::Extensions::Base
 
     attr_accessor :request_type, :score, :message_identifier, :response_code,
             :post_response, :code_major, :severity, :description, :operation,
@@ -65,7 +65,7 @@ module IMS::LTI
 
     # Convenience method for creating a new OutcomeResponse from a response object
     #
-    #    req = IMS::LTI::OutcomeResponse.from_post_response(response)
+    #    req = IMS::LTI1_1::OutcomeResponse.from_post_response(response)
     def self.from_post_response(post_response)
       response = OutcomeResponse.new
       response.process_post_response(post_response)
@@ -108,7 +108,7 @@ module IMS::LTI
       begin
         doc = REXML::Document.new xml
       rescue => e
-        raise IMS::LTI::XMLParseError, "#{e}\nOriginal xml: '#{xml}'"
+        raise IMS::LTI1_1::XMLParseError, "#{e}\nOriginal xml: '#{xml}'"
       end
       @message_identifier = doc.text("//imsx_statusInfo/imsx_messageIdentifier").to_s
       @code_major = doc.text("//imsx_statusInfo/imsx_codeMajor")
@@ -133,7 +133,7 @@ module IMS::LTI
         env.imsx_POXHeader do |header|
           header.imsx_POXResponseHeaderInfo do |info|
             info.imsx_version "V1.0"
-            info.imsx_messageIdentifier @message_identifier || IMS::LTI::generate_identifier
+            info.imsx_messageIdentifier @message_identifier || IMS::LTI1_1::generate_identifier
             info.imsx_statusInfo do |status|
               status.imsx_codeMajor @code_major
               status.imsx_severity @severity

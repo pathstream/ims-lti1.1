@@ -1,5 +1,5 @@
 require "spec_helper"
-describe IMS::LTI::OutcomeRequest do
+describe IMS::LTI1_1::OutcomeRequest do
   before do
     create_test_tp
   end
@@ -21,7 +21,7 @@ describe IMS::LTI::OutcomeRequest do
   end
 
   it "should parse replaceResult xml" do
-    req = IMS::LTI::OutcomeRequest.new
+    req = IMS::LTI1_1::OutcomeRequest.new
     req.process_xml(replace_result_xml)
     req.operation.should == 'replaceResult'
     req.lis_result_sourcedid.should == '261-154-728-17-784'
@@ -30,7 +30,7 @@ describe IMS::LTI::OutcomeRequest do
   end
 
   it "should parse readResult xml" do
-    req = IMS::LTI::OutcomeRequest.new
+    req = IMS::LTI1_1::OutcomeRequest.new
     req.process_xml(read_result_xml)
     req.operation.should == 'readResult'
     req.lis_result_sourcedid.should == '261-154-728-17-784'
@@ -39,7 +39,7 @@ describe IMS::LTI::OutcomeRequest do
   end
 
   it "should parse deleteResult xml" do
-    req = IMS::LTI::OutcomeRequest.new
+    req = IMS::LTI1_1::OutcomeRequest.new
     req.process_xml(delete_result_xml)
     req.operation.should == 'deleteResult'
     req.lis_result_sourcedid.should == '261-154-728-17-784'
@@ -48,10 +48,10 @@ describe IMS::LTI::OutcomeRequest do
   end
 
   it "should generate request xml" do
-    req = IMS::LTI::OutcomeRequest.new(
+    req = IMS::LTI1_1::OutcomeRequest.new(
                                       :lis_result_sourcedid => '1234',
                                       :score => 0.5,
-                                      :operation => IMS::LTI::OutcomeRequest::REPLACE_REQUEST
+                                      :operation => IMS::LTI1_1::OutcomeRequest::REPLACE_REQUEST
     )
     xml = req.generate_request_xml
     xml.should be_a String

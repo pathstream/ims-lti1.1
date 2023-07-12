@@ -1,8 +1,8 @@
-module IMS::LTI
+module IMS::LTI1_1
   class ToolBase
-    include IMS::LTI::Extensions::Base
-    include IMS::LTI::LaunchParams
-    include IMS::LTI::RequestValidator
+    include IMS::LTI1_1::Extensions::Base
+    include IMS::LTI1_1::LaunchParams
+    include IMS::LTI1_1::RequestValidator
 
     # OAuth credentials
     attr_accessor :consumer_key, :consumer_secret
@@ -19,7 +19,7 @@ module IMS::LTI
     # Convenience method for doing oauth signed requests to services that
     # aren't supported by this library
     def post_service_request(url, content_type, body)
-      IMS::LTI::post_service_request(@consumer_key,
+      IMS::LTI1_1::post_service_request(@consumer_key,
                                      @consumer_secret,
                                      url,
                                      content_type,

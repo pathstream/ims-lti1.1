@@ -1,5 +1,5 @@
 require "spec_helper"
-describe IMS::LTI::ToolConfig do
+describe IMS::LTI1_1::ToolConfig do
 
   cc_lti_xml = <<XML
 <?xml version="1.0" encoding="UTF-8"?>
@@ -48,7 +48,7 @@ XML
   end
 
   it "should generate the expected config xml" do
-    config = IMS::LTI::ToolConfig.new("title" => "Test Config", "secure_launch_url" => "https://www.example.com/lti", "custom_params" => {"custom1" => "customval1"})
+    config = IMS::LTI1_1::ToolConfig.new("title" => "Test Config", "secure_launch_url" => "https://www.example.com/lti", "custom_params" => {"custom1" => "customval1"})
     config.description = "Description of boringness"
     config.launch_url = "http://www.example.com/lti"
     config.icon = "http://wil.to/_/beardslap.gif"
@@ -80,13 +80,13 @@ XML
   end
 
   it "should read an xml config" do
-    config = IMS::LTI::ToolConfig.create_from_xml(cc_lti_xml)
+    config = IMS::LTI1_1::ToolConfig.create_from_xml(cc_lti_xml)
     clear_shema_stuffs(config.to_xml(:indent => 2)).should == clear_shema_stuffs(cc_lti_xml)
   end
 
   it "should not allow creating invalid config xml" do
-    config = IMS::LTI::ToolConfig.new("title" => "Test Config")
-    expect { config.to_xml }.to raise_error(IMS::LTI::InvalidLTIConfigError)
+    config = IMS::LTI1_1::ToolConfig.new("title" => "Test Config")
+    expect { config.to_xml }.to raise_error(IMS::LTI1_1::InvalidLTIConfigError)
   end
 
 end

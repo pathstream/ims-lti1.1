@@ -1,13 +1,13 @@
-module IMS::LTI
+module IMS::LTI1_1
   module Extensions
 
     # An LTI extension that adds support for sending data back to the consumer
     # in addition to the score.
     #
     #     # Initialize TP object with OAuth creds and post parameters
-    #     provider = IMS::LTI::ToolProvider.new(consumer_key, consumer_secret, params)
+    #     provider = IMS::LTI1_1::ToolProvider.new(consumer_key, consumer_secret, params)
     #     # add extension
-    #     provider.extend IMS::LTI::Extensions::OutcomeData::ToolProvider
+    #     provider.extend IMS::LTI1_1::Extensions::OutcomeData::ToolProvider
     #
     # If the tool was launch as an outcome service and it supports the data extension
     # you can POST a score to the TC.
@@ -30,15 +30,15 @@ module IMS::LTI
     #     end
     module OutcomeData
 
-      #IMS::LTI::Extensions::OutcomeData::ToolProvider
+      #IMS::LTI1_1::Extensions::OutcomeData::ToolProvider
       module Base
         def outcome_request_extensions
-          super + [IMS::LTI::Extensions::OutcomeData::OutcomeRequest]
+          super + [IMS::LTI1_1::Extensions::OutcomeData::OutcomeRequest]
         end
       end
 
       module ToolProvider
-        include IMS::LTI::Extensions::ExtensionBase
+        include IMS::LTI1_1::Extensions::ExtensionBase
         include Base
 
         # a list of the supported outcome data types
@@ -138,7 +138,7 @@ module IMS::LTI
       end
 
       module ToolConsumer
-        include IMS::LTI::Extensions::ExtensionBase
+        include IMS::LTI1_1::Extensions::ExtensionBase
         include Base
 
         OUTCOME_DATA_TYPES = %w{text url lti_launch_url submitted_at}
@@ -168,7 +168,7 @@ module IMS::LTI
       end
 
       module OutcomeRequest
-        include IMS::LTI::Extensions::ExtensionBase
+        include IMS::LTI1_1::Extensions::ExtensionBase
         include Base
 
         attr_accessor :outcome_text,

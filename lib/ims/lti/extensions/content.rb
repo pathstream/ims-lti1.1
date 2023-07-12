@@ -1,12 +1,12 @@
-module IMS::LTI
+module IMS::LTI1_1
   module Extensions
 
     # An LTI extension that adds support for content back to the consumer
     #
     #     # Initialize TP object with OAuth creds and post parameters
-    #     provider = IMS::LTI::ToolProvider.new(consumer_key, consumer_secret, params)
+    #     provider = IMS::LTI1_1::ToolProvider.new(consumer_key, consumer_secret, params)
     #     # add extension
-    #     provider.extend IMS::LTI::Extensions::Content::ToolProvider
+    #     provider.extend IMS::LTI1_1::Extensions::Content::ToolProvider
     #
     # If the tool was launched as an content request and it supports the content extension
     # you can redirect the user to the tool consumer using the return url helper methods.
@@ -20,7 +20,7 @@ module IMS::LTI
     #
     module Content
       module ToolProvider
-        include IMS::LTI::Extensions::ExtensionBase
+        include IMS::LTI1_1::Extensions::ExtensionBase
         include Base
 
         # a list of the supported outcome data types
@@ -210,7 +210,7 @@ module IMS::LTI
       end
 
       module ToolConsumer
-        include IMS::LTI::Extensions::ExtensionBase
+        include IMS::LTI1_1::Extensions::ExtensionBase
         include Base
         
         # a list of the content types accepted

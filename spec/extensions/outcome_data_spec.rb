@@ -1,11 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper.rb')
 
-describe IMS::LTI::Extensions do
+describe IMS::LTI1_1::Extensions do
   before do
     create_params
     @params['ext_outcome_data_values_accepted'] = 'text'
-    @tp = IMS::LTI::ToolProvider.new("hi", 'oi', @params)
-    @tp.extend IMS::LTI::Extensions::OutcomeData::ToolProvider
+    @tp = IMS::LTI1_1::ToolProvider.new("hi", 'oi', @params)
+    @tp.extend IMS::LTI1_1::Extensions::OutcomeData::ToolProvider
   end
 
   it "should correctly check supported data fields" do
@@ -17,8 +17,8 @@ describe IMS::LTI::Extensions do
   end
 
   it "should add TC functionality" do
-    tc = IMS::LTI::ToolConsumer.new("hey", "ho")
-    tc.extend IMS::LTI::Extensions::OutcomeData::ToolConsumer
+    tc = IMS::LTI1_1::ToolConsumer.new("hey", "ho")
+    tc.extend IMS::LTI1_1::Extensions::OutcomeData::ToolConsumer
     tc.support_outcome_data!
     tc.outcome_data_values_accepted.should == 'text,url,lti_launch_url,submitted_at'
     tc.outcome_data_values_accepted = 'url,text'
@@ -57,22 +57,22 @@ describe IMS::LTI::Extensions do
   end
 
   it "should parse replaceResult xml with extension val for url" do
-    req = IMS::LTI::OutcomeRequest.new
-    req.extend IMS::LTI::Extensions::OutcomeData::OutcomeRequest
+    req = IMS::LTI1_1::OutcomeRequest.new
+    req.extend IMS::LTI1_1::Extensions::OutcomeData::OutcomeRequest
     req.process_xml(result_xml % %{<resultData><url>http://www.example.com</url></resultData>})
     req.outcome_url.should == "http://www.example.com"
   end
 
   it "should parse replaceResult xml with extension val for ltiLaunchUrl" do
-    req = IMS::LTI::OutcomeRequest.new
-    req.extend IMS::LTI::Extensions::OutcomeData::OutcomeRequest
+    req = IMS::LTI1_1::OutcomeRequest.new
+    req.extend IMS::LTI1_1::Extensions::OutcomeData::OutcomeRequest
     req.process_xml(result_xml % %{<resultData><ltiLaunchUrl>http://www.example.com/launch</ltiLaunchUrl></resultData>})
     req.outcome_lti_launch_url.should == "http://www.example.com/launch"
   end
 
   it "should parse replaceResult xml with extension val for text" do
-    req = IMS::LTI::OutcomeRequest.new
-    req.extend IMS::LTI::Extensions::OutcomeData::OutcomeRequest
+    req = IMS::LTI1_1::OutcomeRequest.new
+    req.extend IMS::LTI1_1::Extensions::OutcomeData::OutcomeRequest
     req.process_xml(result_xml % %{<resultData><text>what the text</text></resultData>})
     req.outcome_text.should == "what the text"
   end
