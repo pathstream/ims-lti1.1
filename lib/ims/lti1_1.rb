@@ -24,7 +24,7 @@ module IMS # :nodoc:
   #
   # To require the library in your project:
   #
-  #    require 'ims/lti'
+  #    require 'ims/lti1_1'
   module LTI1_1
 
     # The versions of LTI this library supports
@@ -56,14 +56,14 @@ module IMS # :nodoc:
   end
 end
 
-require 'ims/lti/extensions'
-require 'ims/lti/launch_params'
-require 'ims/lti/request_validator'
-require 'ims/lti/tool_base'
-require 'ims/lti/deprecated_role_checks'
-require 'ims/lti/role_checks'
-require 'ims/lti/tool_provider'
-require 'ims/lti/tool_consumer'
-require 'ims/lti/outcome_request'
-require 'ims/lti/outcome_response'
-require 'ims/lti/tool_config'
+require 'ims/lti1_1/extensions'
+require 'ims/lti1_1/launch_params'
+require 'ims/lti1_1/request_validator'
+require 'ims/lti1_1/tool_base'
+require 'ims/lti1_1/deprecated_role_checks'
+require 'ims/lti1_1/role_checks'
+require 'ims/lti1_1/tool_provider'
+require 'ims/lti1_1/tool_consumer'
+require 'ims/lti1_1/outcome_request'
+require 'ims/lti1_1/outcome_response'
+require 'ims/lti1_1/tool_config'

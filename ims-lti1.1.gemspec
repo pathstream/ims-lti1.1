@@ -1,6 +1,6 @@
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'ims/lti/version'
+require 'ims/lti1_1/version'
 
 Gem::Specification.new do |s|
   s.name = %q{ims-lti1.1}

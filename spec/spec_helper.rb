@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib_dir) unless $LOAD_PATH.include?(lib_dir)
 
 require 'rspec'
 require 'net/http'
-require 'ims/lti'
+require 'ims/lti1_1'
 
 def create_params
   @params = {

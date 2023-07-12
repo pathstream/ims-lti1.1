@@ -4,14 +4,14 @@ This ruby library is to help create Tool Providers and Tool Consumers for the
 [IMS LTI standard](http://www.imsglobal.org/lti/index.html).
 
 ## Installation
-This is packaged as the `ims-lti` rubygem, so you can just add the dependency to
+This is packaged as the `ims-lti1_1` rubygem, so you can just add the dependency to
 your Gemfile or install the gem on your system:
 
-    gem install ims-lti
+    gem install ims-lti1_1
 
 To require the library in your project:
 
-    require 'ims/lti'
+    require 'ims/lti1_1'
 
 To validate the OAuth signatures you need to require the appropriate request
 proxy for your application. For example:

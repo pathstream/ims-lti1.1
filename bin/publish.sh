@@ -3,7 +3,7 @@
 
 set -e
 
-current_version=$(ruby -e "require '$(pwd)/lib/ims/lti/version.rb'; puts IMS::LTI1_1::VERSION;")
+current_version=$(ruby -e "require '$(pwd)/lib/ims/lti1_1/version.rb'; puts IMS::LTI1_1::VERSION;")
 existing_versions=$(gem list --exact ims-lti --remote --all | grep -o '\((.*)\)$' | tr -d '() ')
 
 if [[ $existing_versions == *$current_version* ]]; then

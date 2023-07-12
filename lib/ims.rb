@@ -1,1 +1,1 @@
-require 'ims/lti'
+require 'ims/lti1_1'

@@ -40,6 +40,6 @@ module IMS::LTI1_1
   end
 end
 
-require 'ims/lti/extensions/outcome_data'
-require 'ims/lti/extensions/content'
-require 'ims/lti/extensions/canvas'
+require 'ims/lti1_1/extensions/outcome_data'
+require 'ims/lti1_1/extensions/content'
+require 'ims/lti1_1/extensions/canvas'
