@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'ims/lti/version'
 
 Gem::Specification.new do |s|
-  s.name = %q{ims-lti}
+  s.name = %q{ims-lti1.1}
   s.version = IMS::LTI1_1::VERSION
 
   s.add_dependency 'builder', '>= 1.0', '< 4.0'
