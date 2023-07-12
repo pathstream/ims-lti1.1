@@ -1,4 +1,4 @@
-module IMS::LTI
+module IMS::LTI1_1
   # Some convenience methods for the most used roles
   # Take care when using context_ helpers, as the context of an LTI launch
   # determines the meaning of that role. For example, if the context is an

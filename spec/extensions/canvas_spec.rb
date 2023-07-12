@@ -1,9 +1,9 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper.rb')
 
-describe IMS::LTI::Extensions do
+describe IMS::LTI1_1::Extensions do
   subject(:tc) do
-    tc = IMS::LTI::ToolConfig.new("title" => "Test Config", "secure_launch_url" => "https://www.example.com/lti", "custom_params" => {"custom1" => "customval1"})
-    tc.extend IMS::LTI::Extensions::Canvas::ToolConfig
+    tc = IMS::LTI1_1::ToolConfig.new("title" => "Test Config", "secure_launch_url" => "https://www.example.com/lti", "custom_params" => {"custom1" => "customval1"})
+    tc.extend IMS::LTI1_1::Extensions::Canvas::ToolConfig
   end
 
   it "should support default canvas extension parameters" do

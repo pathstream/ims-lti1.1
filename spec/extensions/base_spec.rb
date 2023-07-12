@@ -11,7 +11,7 @@ module TestLTIExtension
   end
 
   module ToolProvider
-    include IMS::LTI::Extensions::ExtensionBase
+    include IMS::LTI1_1::Extensions::ExtensionBase
     include Base
     
     def tp_test
@@ -20,7 +20,7 @@ module TestLTIExtension
   end
 
   module ToolConsumer
-    include IMS::LTI::Extensions::ExtensionBase
+    include IMS::LTI1_1::Extensions::ExtensionBase
     include Base
     
     def special_key=(val)
@@ -33,7 +33,7 @@ module TestLTIExtension
   end
 
   module OutcomeRequest
-    include IMS::LTI::Extensions::ExtensionBase
+    include IMS::LTI1_1::Extensions::ExtensionBase
     include Base
     
     attr_accessor :test_val
@@ -49,7 +49,7 @@ module TestLTIExtension
   end
 
   module OutcomeResponse
-    include IMS::LTI::Extensions::ExtensionBase
+    include IMS::LTI1_1::Extensions::ExtensionBase
     include Base
 
     def response_test
@@ -58,7 +58,7 @@ module TestLTIExtension
   end
 end
 
-describe IMS::LTI::Extensions do
+describe IMS::LTI1_1::Extensions do
   before do
     create_test_tp
     @tp.extend TestLTIExtension::ToolProvider
@@ -69,7 +69,7 @@ describe IMS::LTI::Extensions do
   end
   
   it "should add TC functionality" do
-    tc = IMS::LTI::ToolConsumer.new("hey", "ho")
+    tc = IMS::LTI1_1::ToolConsumer.new("hey", "ho")
     tc.extend TestLTIExtension::ToolConsumer
     tc.special_key = 'hey'
     tc.special_key.should == 'hey'
@@ -83,7 +83,7 @@ describe IMS::LTI::Extensions do
   end
   
   it "should parse replaceResult xml with extension val" do
-    req = IMS::LTI::OutcomeRequest.new
+    req = IMS::LTI1_1::OutcomeRequest.new
     req.extend TestLTIExtension::OutcomeRequest
     req.process_xml(result_xml % %{<testVal>hey there</testVal>})
     req.test_val.should == 'hey there'

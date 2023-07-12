@@ -1,4 +1,4 @@
-module IMS::LTI
+module IMS::LTI1_1
   # Class for implementing an LTI Tool Consumer
   class ToolConsumer < ToolBase
     attr_accessor :launch_url, :timestamp, :nonce
@@ -37,7 +37,7 @@ module IMS::LTI
     #
     #
     def generate_launch_data
-      raise IMS::LTI::InvalidLTIConfigError, "Not all required params set for tool launch" unless has_required_params?
+      raise IMS::LTI1_1::InvalidLTIConfigError, "Not all required params set for tool launch" unless has_required_params?
 
       params = self.to_params
       params['lti_version'] ||= 'LTI-1p0'

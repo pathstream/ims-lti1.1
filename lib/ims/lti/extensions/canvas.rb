@@ -1,4 +1,4 @@
-module IMS::LTI
+module IMS::LTI1_1
   module Extensions
     # Module that adds Canvas specific LTI extensions
     #
@@ -8,11 +8,11 @@ module IMS::LTI
     # To generate an XML configuration:
     #
     #    # Create a config object and set some options
-    #    tc = IMS::LTI::ToolConfig.new(:title => "Example Sinatra Tool Provider", :launch_url => url)
+    #    tc = IMS::LTI1_1::ToolConfig.new(:title => "Example Sinatra Tool Provider", :launch_url => url)
     #    tc.description = "This example LTI Tool Provider supports LIS Outcome pass-back."
     #
     #    # Extend the Canvas Tool config and add canvas related extensions
-    #    tc.extend IMS::LTI::Extensions::Canvas::ToolConfig
+    #    tc.extend IMS::LTI1_1::Extensions::Canvas::ToolConfig
     #    tc.homework_submission! 'http://someplace.com/homework', 'Find Homework'
     #
     #    # generate the XML
@@ -20,7 +20,7 @@ module IMS::LTI
     #
     # Or to create a config object from an XML String:
     #
-    #    tc = IMS::LTI::ToolConfig.create_from_xml(xml)
+    #    tc = IMS::LTI1_1::ToolConfig.create_from_xml(xml)
 
     module Canvas
       module ToolConfig

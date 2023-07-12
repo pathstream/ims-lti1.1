@@ -1,11 +1,11 @@
 require 'cgi'
 
-module IMS::LTI
+module IMS::LTI1_1
 
   # Class for implementing an LTI Tool Provider
   #
   #     # Initialize TP object with OAuth creds and post parameters
-  #     provider = IMS::LTI::ToolProvider.new(consumer_key, consumer_secret, params)
+  #     provider = IMS::LTI1_1::ToolProvider.new(consumer_key, consumer_secret, params)
   #
   #     # Verify OAuth signature by passing the request object
   #     if provider.valid_request?(request)
@@ -112,7 +112,7 @@ module IMS::LTI
     #
     # Example:
     #
-    #    tc = IMS::LTI::tc.new
+    #    tc = IMS::LTI1_1::tc.new
     #    tc.launch_presentation_return_url = "http://example.com/return"
     #    tc.lti_msg = "hi there"
     #    tc.lti_errorlog = "error happens"

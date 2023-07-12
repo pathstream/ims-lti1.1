@@ -1,4 +1,4 @@
-module IMS::LTI
+module IMS::LTI1_1
   # Class used to represent an LTI configuration
   #
   # It can create and read the Common Cartridge XML representation of LTI links
@@ -8,7 +8,7 @@ module IMS::LTI
   # To generate an XML configuration:
   #
   #    # Create a config object and set some options
-  #    tc = IMS::LTI::ToolConfig.new(:title => "Example Sinatra Tool Provider", :launch_url => url)
+  #    tc = IMS::LTI1_1::ToolConfig.new(:title => "Example Sinatra Tool Provider", :launch_url => url)
   #    tc.description = "This example LTI Tool Provider supports LIS Outcome pass-back."
   #
   #    # generate the XML
@@ -16,7 +16,7 @@ module IMS::LTI
   #
   # Or to create a config object from an XML String:
   #
-  #    tc = IMS::LTI::ToolConfig.create_from_xml(xml)
+  #    tc = IMS::LTI1_1::ToolConfig.create_from_xml(xml)
   class ToolConfig
     attr_reader :custom_params, :extensions
 
@@ -124,7 +124,7 @@ module IMS::LTI
 
     # Generate XML from the current settings
     def to_xml(opts = {})
-      raise IMS::LTI::InvalidLTIConfigError, "A launch url is required for an LTI configuration." unless self.launch_url || self.secure_launch_url
+      raise IMS::LTI1_1::InvalidLTIConfigError, "A launch url is required for an LTI1_1 configuration." unless self.launch_url || self.secure_launch_url
 
       builder = Builder::XmlMarkup.new(:indent => opts[:indent] || 0)
       builder.instruct!

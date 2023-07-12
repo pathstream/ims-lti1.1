@@ -4,7 +4,7 @@ require 'ims/lti/version'
 
 Gem::Specification.new do |s|
   s.name = %q{ims-lti}
-  s.version = IMS::LTI::VERSION
+  s.version = IMS::LTI1_1::VERSION
 
   s.add_dependency 'builder', '>= 1.0', '< 4.0'
   s.add_dependency 'oauth', '>= 0.4.5'

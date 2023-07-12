@@ -1,7 +1,7 @@
 # These are here for backwards-compatibility
 # But they are deprecated and the new ones in
 # role_checks.rb should be used
-module IMS::LTI
+module IMS::LTI1_1
 module DeprecatedRoleChecks
   # Check whether the Launch Parameters have a role
     def has_role?(role)
